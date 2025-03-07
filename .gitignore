@@ -1,0 +1,12 @@
+.idea/
+__pycache__
+var/
+build/
+.venv
+*.conf
+*.ini
+*.pyc
+*.egg-info
+dist/
+error.log
+.pytest_cache

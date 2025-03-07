@@ -1,0 +1,46 @@
+[main]
+mod_name = face_capture
+active = yes
+# 0：严重错误，1：错误，2：警告，3：信息，4：调试，5：跟踪调试
+debug = 3
+dry_run = no
+frame_redundancy = 50
+image_width = 300
+image_height = 300
+eye_diff_threshold = 50
+
+[face_conf.custom]
+video_path =
+sub_path =
+avatar_output_path =
+
+[loggers]
+keys = root
+
+[formatters]
+keys = defaultFormatter
+
+[formatter_defaultFormatter]
+format = %(asctime)s %(process)s [%(levelname)s] %(message)s
+datefmt = %Y-%m-%d %H:%M:%S
+class = logging.Formatter
+
+[handlers]
+keys = defaultHandler, fileHandler
+
+[handler_defaultHandler]
+class = StreamHandler
+level = INFO
+formatter = defaultFormatter
+args = (sys.stdout,)
+
+[handler_fileHandler]
+class = logging.handlers.RotatingFileHandler
+level = INFO
+formatter = defaultFormatter
+args = ('/var/log/ds/screen.log', 'w', 100000000, 3, 'utf-8', False)
+
+[logger_root]
+level = INFO
+handlers = defaultHandler, fileHandler
+qualname = root
